@@ -1,0 +1,15 @@
+##事件
+	1.点击事件 tap
+	2.长按事件 longtap
+	3.触摸事件 touchstart touchend touchmove touchcancel
+	4.其他 submit input
+##事件冒泡
+	1.冒泡事件
+		点击 长按 触摸
+	2.非冒泡事件
+###事件绑定区别
+	bind 会触发冒泡事件
+	catch 不会触发冒泡事件
+##事件对象
+	事件源组件target
+	当前组件 currentTaget 重点dataset
