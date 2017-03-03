@@ -1,0 +1,56 @@
+##组件的基本使用
+###一、视图
+		1. view
+		2. scroll-view
+		3. swiper
+	基础内容
+		1. text文本
+	表单组件
+		2. button
+###二、数据绑定
+	{{text}} {{btnvalue}}
+		* 将text在data中定义
+		* data:{text:"这是文本内容",btnbalue:"这是按钮的内容"}
+	绑定事件
+		* <button type="primary" bindtap="btnTwo"> {{btnText}} </button>
+		* btnTwo:function (){
+    
+			console.log("触发点击");
+			var isShow=this.data.show;
+			var newsdata = this.data.news;
+			newsdata.pop();
+			this.setData({text:"这是一个新内容",show:!isShow,news:newsdata});
+			}
+		 用this.setData可以动态设置data里面的内容 
+###三、渲染标签
+	1. if	
+		data:{show:true}
+		<view wx:if="{{show}}">{{text}}  1</view>
+		当show为true时会显示标签内容，否则不显示
+	2. else
+		<view wx:else>{{text}}   2</view>
+	3. for 循环标签
+		data:{news:['aaa','bbb','ccc']}
+		<view  wx:for="{{news}}" wx:for-item="itemx">
+    			{{itemx}}
+		</view> 
+		{{index}}-{{itemx}}可以给循环加序号，wx:for-item="itemx"是自定义的方法，默认为item,index也可以自定义
+
+###四、模板的使用
+	
+	1. 模板的引用
+		单个模板：<include src="../templates/header" />（后面的/不能缺 不然会出现问题）
+		多个模板：用is指定模板
+			<import src="../templates/footer" />
+			<template is="footer1" />
+  			<template is="footer2" data="{{text:'导入设置的内容'}}" />
+			用data+数据动态改变模板内容
+		(
+		<template name = "footer1">
+			这是底部内容1
+		</template>
+
+		<template name = "footer2">
+			这是底部内容2 --{{text}}
+		</template>
+		)
